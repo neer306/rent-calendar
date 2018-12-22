@@ -1,9 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom'
+import App from './components/App'
 
-const title = 'test';
-
-ReactDOM.render(
-    <div>{title}</div>,
-    document.getElementById('app')
-);
+render(<App/>, document.getElementById('root'));
