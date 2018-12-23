@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MonthSelect from "./MonthSelector/MonthSelect";
-import CalendarContainer from "./CalendarContainer";
+import CalendarContainer from "./CalendarContainer/CalendarContainer";
 
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
         return (
             <div>
                 <MonthSelect date={this.state.date} onNextMonth={this.nextMonth} onPrevMonth={this.prevMonth}/>
-                {/*<CalendarContainer date={this.state.date}/>*/}
+                <CalendarContainer date={this.state.date}/>
             </div>
         );
     }
