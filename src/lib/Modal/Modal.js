@@ -5,7 +5,6 @@ import './modal.scss';
 const Modal = ({ handleClose, show, children }) => {
     const showHideClassName = show ? "modal modal_open" : "modal";
 
-    console.log(showHideClassName);
     return (
         <div className={showHideClassName}>
             <div className='modal__overlay' onClick={handleClose}>

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import Modal from '../Modal/Modal';
+import Modal from '../../lib/Modal/Modal';
 import './calendar-container.scss';
+import BookingModal from "../BookingModal/BookingModal";
 
 class CalendarContainer extends Component {
 
     state = {
         daysArray: [],
         modalOpen: false,
+        clickCount: 0
     };
 
     componentWillMount() {
@@ -22,10 +24,16 @@ class CalendarContainer extends Component {
     }
 
     render() {
-        const calendarDayClass = isBooked => isBooked ? 'calendar__day calendar__day_booked' : 'calendar__day';
+        const calendarDayClass = (item) => {
+            [
+                'calendar__day',
+                item.booked ? 'calendar__day_booked' : null,
+                item.currentMonth ? 'calendar__day_not-current' : null,
+            ].join(' ')
+        };
         const daysArray = this.state.daysArray.map((item, index) =>
             <div key={index}
-                 className={calendarDayClass(item.booked)}
+                 className={calendarDayClass(item)}
                  onClick={this.onDayClick.bind(this, index)}>
                 {item.number}
             </div>
@@ -36,7 +44,9 @@ class CalendarContainer extends Component {
                 <div className='calendar'>
                     {daysArray}
                 </div>
-                <Modal show={this.state.modalOpen} handleClose={this.hideModal}/>
+                <Modal show={this.state.modalOpen} handleClose={this.hideModal}>
+                    <BookingModal/>
+                </Modal>
             </div>
         );
     }
@@ -83,12 +93,12 @@ class CalendarContainer extends Component {
                 booked: false,
             });
         }
-        
+
         const firstDayDate = new Date(year, month, dateArray[0].number);
         let firstDay = firstDayDate.getDay();
         const lastDayDate = new Date(year, month, dateArray[dateArray.length - 1].number);
         let lastDay = lastDayDate.getDay();
-        
+
         while (firstDay > 1) {
             const number = new Date(firstDayDate.setDate(firstDayDate.getDate() - 1)).getDate();
             dateArray.unshift({
@@ -99,7 +109,7 @@ class CalendarContainer extends Component {
             });
             firstDay--;
         }
-        
+
         while (lastDay > 0 && lastDay < 7) {
             const number = new Date(lastDayDate.setDate(lastDayDate.getDate() + 1)).getDate();
             dateArray.push({
