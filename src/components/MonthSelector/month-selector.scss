@@ -1,3 +1,10 @@
 .month-selector {
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.month-selector__name {
+    text-align: center;
+    width: 150px;
 }

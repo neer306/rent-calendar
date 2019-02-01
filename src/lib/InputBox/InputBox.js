@@ -2,14 +2,14 @@ import React from 'react';
 import './input-box.scss';
 
 const InputBox = (props) => (
-    <div className="form-group">
-        <label className="form-label">{props.title}</label>
+    <div className="input-box">
+        <label className="input-box__label">{props.label}</label>
         <input
-            className="form-input"
+            className="input-box__control"
             name={props.name}
-            type={props.inputType}
-            value={props.content}
-            onChange={props.controlFunc}
+            type={props.type || 'text'}
+            value={props.value}
+            onChange={props.onChange}
             placeholder={props.placeholder} />
     </div>
 );

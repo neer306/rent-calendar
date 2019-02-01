@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MonthSelect from "./MonthSelector/MonthSelect";
 import CalendarContainer from "./CalendarContainer/CalendarContainer";
+import './main.scss';
 
 
 class App extends Component {

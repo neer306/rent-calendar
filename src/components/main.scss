@@ -1,0 +1,43 @@
+@import "~normalize.css";
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #000;
+    font-size: 14px;
+    padding: 30px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 12px 0;
+}
+
+// * * *  Helpers * * * //
+
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.caption {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #999;
+    letter-spacing: 0.5px;
+}

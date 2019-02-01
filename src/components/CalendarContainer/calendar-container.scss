@@ -13,11 +13,12 @@
     padding: 8px;
     background-color: #f5fcff;
 
-    &_booked {
-        background-color: #fff3d7;
+    &_not-current {
+        opacity: .45;
     }
 
-    .calendar__day_not-current {
-        background-color: #eeeeee;
+    &_selected {
+        background-color: #fff3d7;
+        opacity: 1;
     }
 }

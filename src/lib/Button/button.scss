@@ -1,0 +1,36 @@
+.button {
+    user-select: none;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    cursor: pointer;
+    height: 38px;
+    position: relative;
+    padding: 0 15px;
+    border: 1px solid;
+    font-size: 14px;
+    line-height: 36px;
+    margin-right: 8px;
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+
+    &_primary {
+        color: #fff;
+        border-color: #0f8fee;
+        background-color: #0f8fee;
+
+        &:hover {
+            background-color: #0e81d6;
+        }
+    }
+
+    &_secondary {
+        color: #0f8fee;
+        border-color: #0f8fee;
+        background-color: transparent;
+    }
+
+
+}
