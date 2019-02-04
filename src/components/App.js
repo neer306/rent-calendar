@@ -1,35 +1,29 @@
 import React, { Component } from 'react';
+import {connect} from "react-redux";
+
 import MonthSelect from "./MonthSelector/MonthSelect";
 import CalendarContainer from "./CalendarContainer/CalendarContainer";
 import './main.scss';
+import { initial } from "../actions";
 
 
 class App extends Component {
-
-    state = {
-        date: new Date()
-    };
-
-    nextMonth = () => {
-        this.setState({
-            date: new Date(this.state.date.getFullYear(), this.state.date.getMonth() + 1, 1),
-        })
-    };
-
-    prevMonth = () => {
-        this.setState({
-            date: new Date(this.state.date.getFullYear(), this.state.date.getMonth() - 1, 1),
-        })
-    };
+    componentDidMount() {
+        const { initial } = this.props;
+        initial();
+    }
 
     render() {
         return (
             <div>
-                <MonthSelect date={this.state.date} onNextMonth={this.nextMonth} onPrevMonth={this.prevMonth}/>
-                <CalendarContainer date={this.state.date}/>
+                <MonthSelect/>
+                <CalendarContainer/>
             </div>
         );
     }
 }
 
-export default App;
+export default connect(
+    null,
+    { initial },
+)(App);

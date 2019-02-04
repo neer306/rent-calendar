@@ -1,4 +1,7 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { nextMonth, prevMonth } from '../../actions';
+
 import './month-selector.scss';
 import Button from "../../lib/Button/Button";
 
@@ -13,16 +16,21 @@ class MonthSelect extends PureComponent {
     }
 
     render() {
-        console.log('render', this.props);
-        const { date, onNextMonth, onPrevMonth } = this.props;
+        const { nextMonth, prevMonth, currentDate } = this.props;
+
         return (
             <div className='month-selector'>
-                <Button type={'secondary'} clickHandler={onNextMonth}>-</Button>
-                <div className={'month-selector__name'}>{this.dateRepresent(date)}</div>
-                <Button type={'secondary'} clickHandler={onPrevMonth}>+</Button>
+                <Button type={'secondary'} clickHandler={prevMonth.bind(this, currentDate)}>-</Button>
+                <div className={'month-selector__name'}>{this.dateRepresent(currentDate)}</div>
+                <Button type={'secondary'} clickHandler={nextMonth.bind(this, currentDate)}>+</Button>
             </div>
         );
     }
 }
 
-export default MonthSelect;
+export default connect(state => ({
+        currentDate: state.currentDate
+    }), {
+    nextMonth,
+    prevMonth
+})(MonthSelect);
