@@ -72,24 +72,28 @@ class CalendarContainer extends Component {
     };
 
     regDaySelection(index) {
-        if (this.state.clickCount === 0) {
-            this.props.clearSelectedDays();
-            this.props.selectDays([index]);
-            console.log(this.props.selectedDays)
-            this.setState({
-                selectedDayIndexFrom: index,
-                clickCount: 1
-            });
-        } else {
-            this.props.selectDays(this.range(this.state.selectedDayIndexFrom, index));
-            console.log(this.props.selectedDays)
-            this.setState({
-                selectedDayIndexTo: index,
-                clickCount: 0
-            });
+        if (this.props.selectedDays.count) {
+            this.props.selectDays(this.range(this.props.selectedDays.indexFrom, index));
             this.showModal();
+        } else {
+            this.props.selectDays([index]);
         }
 
+        // if (this.state.clickCount === 0) {
+        //     this.props.clearSelectedDays();
+        //     this.props.selectDays([index]);
+        //
+        //     this.setState({
+        //         selectedDayIndexFrom: index,
+        //         clickCount: 1
+        //     });
+        // } else {
+        //     this.props.selectDays(this.range(this.state.selectedDayIndexFrom, index));
+        //     this.setState({
+        //         selectedDayIndexTo: index,
+        //         clickCount: 0
+        //     });
+        // }
     }
 
     range(num1, num2) {

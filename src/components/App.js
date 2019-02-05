@@ -9,7 +9,9 @@ import { initial } from "../actions";
 
 class App extends Component {
     componentDidMount() {
+        console.log(this.props)
         const { initial } = this.props;
+        console.log('initial')
         initial();
     }
 

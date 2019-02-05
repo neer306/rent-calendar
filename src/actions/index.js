@@ -1,7 +1,7 @@
 
 export const initial = () => ({
     type: 'MONTH_CHANGE',
-    date: new Date(),
+    currentDate: new Date(),
     daysArray: getDaysArray(new Date())
 });
 
@@ -9,7 +9,7 @@ export const nextMonth = date => {
     const dateCorrected = new Date(date.getFullYear(), date.getMonth() + 1, 1);
     return {
         type: 'MONTH_CHANGE',
-        date: dateCorrected,
+        currentDate: dateCorrected,
         daysArray: getDaysArray(dateCorrected)
     };
 };
@@ -18,7 +18,7 @@ export const prevMonth = date => {
     const dateCorrected = new Date(date.getFullYear(), date.getMonth() - 1, 1);
     return {
         type: 'MONTH_CHANGE',
-        date: dateCorrected,
+        currentDate: dateCorrected,
         daysArray: getDaysArray(dateCorrected)
     };
 };
